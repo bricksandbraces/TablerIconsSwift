@@ -5,7 +5,10 @@ import PackageDescription
 
 let package = Package(
     name: "TablerIconsSwift",
-    products: [
+    platforms: [
+        .macOS(SupportedPlatform.MacOSVersion.v10_15),
+        .iOS(SupportedPlatform.IOSVersion.v14)
+    ], products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "TablerIconsSwift",
@@ -20,9 +23,6 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "TablerIconsSwift",
-            dependencies: []),
-        .testTarget(
-            name: "TablerIconsSwiftTests",
-            dependencies: ["TablerIconsSwift"]),
+            dependencies: [])
     ]
 )
