@@ -46,7 +46,7 @@ public struct TablerIcon: View {
     }
 
     public var body: some View {
-        Text(icon.rawValue)
+        Text(TablerIconToken.iconTokenMap[icon.rawValue] ?? TablerIconToken.iconTokenMap[TablerIconToken.questionMark.rawValue]!)
             .font(.custom(stroke.toFontName(), size: size))
     }
 }
