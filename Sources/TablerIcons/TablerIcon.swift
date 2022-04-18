@@ -8,7 +8,7 @@
 import SwiftUI
 
 public struct TablerIcon: View {
-    enum IconStroke: String {
+    public enum IconStroke: String {
         case ultrathin
         case thin
         case regular = ""
@@ -17,14 +17,33 @@ public struct TablerIcon: View {
         case bold
         case heavy
 
-        func toFontName() -> String {
+        public func toFontName() -> String {
             "tabler-icons\(!rawValue.isEmpty ? "-\(rawValue)" : rawValue)"
         }
     }
 
-    var icon: TablerIconToken
-    var size: CGFloat = 32
-    var stroke: IconStroke = .regular
+    public var icon: TablerIconToken
+    public var size: CGFloat
+    public var stroke: IconStroke
+    
+    public init(_ icon: TablerIconToken, size: CGFloat, stroke: IconStroke) {
+        self.icon = icon
+        self.size = size
+        self.stroke = stroke
+    }
+    
+    public init (_ icon: TablerIconToken, size: CGFloat) {
+        self.init(icon, size: size, stroke: .regular)
+    }
+    
+    public init (_ icon: TablerIconToken, stroke: IconStroke) {
+        self.init(icon, size: 32, stroke: stroke)
+    }
+    
+    
+    public init (_ icon: TablerIconToken) {
+        self.init(icon, size: 32, stroke: .regular)
+    }
 
     public var body: some View {
         Text(icon.rawValue)
@@ -36,44 +55,44 @@ struct CustomIcon_Previews: PreviewProvider {
     static var previews: some View {
         VStack(alignment: .leading) {
             HStack {
-                TablerIcon(icon: .twoFa, size: 16)
+                TablerIcon(.twoFa, size: 16)
                 Spacer()
             }
             HStack {
-                TablerIcon(icon: .twoFa, size: 24)
+                TablerIcon(.twoFa, size: 24)
                 Spacer()
             }
             HStack {
-                TablerIcon(icon: .twoFa, size: 32)
+                TablerIcon(.twoFa, size: 32)
                 Spacer()
             }
             HStack {
-                TablerIcon(icon: .twoFa, size: 42)
+                TablerIcon(.twoFa, size: 42)
                 Spacer()
             }
             HStack {
-                TablerIcon(icon: .twoFa, size: 64)
+                TablerIcon(.twoFa, size: 64)
                 Spacer()
             }
             VStack {
                 HStack {
-                    TablerIcon(icon: .threeDRotate, size: 16)
+                    TablerIcon(.threeDRotate, size: 16)
                     Spacer()
                 }
                 HStack {
-                    TablerIcon(icon: .threeDRotate, size: 24)
+                    TablerIcon(.threeDRotate, size: 24)
                     Spacer()
                 }
                 HStack {
-                    TablerIcon(icon: .threeDRotate, size: 32)
+                    TablerIcon(.threeDRotate, size: 32)
                     Spacer()
                 }
                 HStack {
-                    TablerIcon(icon: .threeDRotate, size: 42)
+                    TablerIcon(.threeDRotate, size: 42)
                     Spacer()
                 }
                 HStack {
-                    TablerIcon(icon: .threeDRotate, size: 64)
+                    TablerIcon(.threeDRotate, size: 64)
                     Spacer()
                 }
             }
